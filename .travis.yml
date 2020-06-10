@@ -28,29 +28,28 @@ cache:
     - "$HOME/.gradle/wrapper/"
     - "$HOME/.android/build-cache"
 before_install:
+  - openssl aes-256-cbc -K $encrypted_b0b79b74bdef_key -iv $encrypted_b0b79b74bdef_iv
+    -in travisapktest.jks.enc -out travisapktest.jks -d
   - chmod -x gradlew
-  - openssl aes-256-cbc -K $encrypted_4924c1e0fd1c_key -iv $encrypted_4924c1e0fd1c_iv -in travisapktest.jks.enc -out D:\\travisapktest.jks -d
 script:
-  - ./gradlew assembleRelease
+  - "./gradlew assembleRelease"
 stages:
-  - build
+  - deploy
 jobs:
   include:
-    - stage: build
-      script:
-        - "./gradlew build connectedCheck"
     - stage: deploy
       before_deploy:
         - export APP_VERSION=$(./gradlew :app:printVersionName)
       deploy:
         provider: releases
-        token: $GITHUB_API_KEY
+        token: "$GITHUB_API_KEY"
         file: app/build/outputs/apk/release/*
         file_glob: true
         skip_cleanup: true
         overwrite: true
-        name: "Name $APP_VERSION"
-        tag: $APP_VERSION
-        release_notes: Automatic build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built by Travis CI on $(date +'%F %T %Z').
+        name: Name $APP_VERSION
+        tag: "$APP_VERSION"
+        release_notes: Automatic build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built by Travis
+          CI on $(date +'%F %T %Z').
         on:
           branch: master
