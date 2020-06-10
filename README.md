@@ -1,1 +1,1 @@
-"# TravisGithubReleasesAndroid" 
+# TravisGithubReleasesAndroid"
