@@ -31,7 +31,6 @@ cache:
     - "$HOME/.android/build-cache"
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_b0b79b74bdef_key -iv $encrypted_b0b79b74bdef_iv -in travisapktest.jks.enc -out travisapktest.jks -d
   - chmod -x gradlew
 
 script:
