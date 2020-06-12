@@ -51,7 +51,7 @@ jobs:
         - export APP_VERSION=$(./gradlew :app:printVersionName)
       deploy:
         provider: releases
-        token: "$GITHUB_API_KEY"
+        token: $GITHUB_API_KEY
         file: app/build/outputs/apk/release/*
         file_glob: true
         cleanup: true
