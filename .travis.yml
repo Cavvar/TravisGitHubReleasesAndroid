@@ -58,9 +58,8 @@ jobs:
         file_glob: true
         cleanup: true
         overwrite: true
-        name: FoodWeek - Ease your daily cooking with our food planer and schedule
-        release_notes: Automatic build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built by Travis
-          CI on $(date +'%F %T %Z').
+        tag: $TRAVIS_TAG
+        name: FoodWeek-Release $TRAVIS_TAG
         on:
           branch: master
-          tags: true
+          tags: false
