@@ -44,7 +44,7 @@ jobs:
         token: "$GITHUB_API_KEY"
         file: app/build/outputs/apk/release/*
         file_glob: true
-        skip_cleanup: true
+        cleanup: true
         overwrite: true
         name: Name $APP_VERSION
         tag: "$APP_VERSION"
