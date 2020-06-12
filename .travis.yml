@@ -41,7 +41,6 @@ before_install:
 script:
   - ./gradlew assembleRelease
   - ./gradlew assembleDebug
-  - ls $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/
 
 stages:
   - deploy
