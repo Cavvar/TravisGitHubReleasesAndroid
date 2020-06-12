@@ -45,8 +45,7 @@ stages:
   - deploy
 
 before_deploy:
-  - ls app/build/outputs/apk/debug
-  - ls app/build/outputs/apk/debug/
+  - ls
   - export TRAVIS_TAG=v2.0
   - git tag $TRAVIS_TAG
 
