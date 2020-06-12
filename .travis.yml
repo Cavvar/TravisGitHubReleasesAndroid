@@ -33,13 +33,13 @@ cache:
     - "$HOME/.android/build-cache"
 
 before_script:
-  - chmod -x gradlew
+  - chmod +x gradlew
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_ff4dccd7b2ed_key -iv $encrypted_ff4dccd7b2ed_iv -in travis-keystore.jks.enc -out travis-keystore.jks -d
 
 script:
-  - chmod +x ./gradlew assembleRelease
+  - ./gradlew assembleRelease
 
 stages:
   - deploy
