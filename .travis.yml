@@ -47,7 +47,7 @@ stages:
   - deploy
 
 before_deploy:
-  - export TRAVIS_TAG=v4.0
+  - export TRAVIS_TAG=v5.0
   - git tag $TRAVIS_TAG
 
 jobs:
@@ -56,9 +56,7 @@ jobs:
       deploy:
         provider: releases
         token: $GITHUB_API_KEY
-        file:
-          - $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/app-debug.apk
-          - app/build/outputs/apk/release/*
+        file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/app-debug.apk
         file_glob: true
         cleanup: true
         overwrite: true
