@@ -41,12 +41,13 @@ before_install:
 script:
   - ./gradlew assembleRelease
   - ./gradlew assembleDebug
+  - ls $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/
 
 stages:
   - deploy
 
 before_deploy:
-  - export TRAVIS_TAG=v3.0
+  - export TRAVIS_TAG=v4.0
   - git tag $TRAVIS_TAG
 
 jobs:
