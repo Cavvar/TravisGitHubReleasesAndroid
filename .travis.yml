@@ -45,7 +45,7 @@ stages:
   - deploy
 
 before_deploy:
-  - export TRAVIS_TAG=v1.0
+  - export TRAVIS_TAG=v2.0
   - git tag $TRAVIS_TAG
 
 jobs:
@@ -56,7 +56,7 @@ jobs:
         token: $GITHUB_API_KEY
         file: app/build/outputs/apk/release/*
         file_glob: true
-        cleanup: true
+        cleanup: false
         overwrite: true
         tag: $TRAVIS_TAG
         name: FoodWeek-Release $TRAVIS_TAG
