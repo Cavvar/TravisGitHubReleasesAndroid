@@ -40,7 +40,6 @@ before_install:
 
 script:
   - ./gradlew assembleRelease
-  - ls app/build/outputs/apk/release/
 
 stages:
   - deploy
@@ -55,7 +54,7 @@ jobs:
       deploy:
         provider: releases
         token: $GITHUB_API_KEY
-        file: app/build/outputs/apk/release/app-release.apk
+        file: app/build/outputs/apk/release/*
         file_glob: true
         cleanup: true
         overwrite: true
