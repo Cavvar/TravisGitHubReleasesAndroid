@@ -45,7 +45,7 @@ stages:
   - deploy
 
 before_deploy:
-  - export TRAVIS_TAG=v3.0
+  - export TRAVIS_TAG=v4.0
   - git tag $TRAVIS_TAG
 
 jobs:
@@ -57,12 +57,11 @@ jobs:
         file: app/build/outputs/apk/release/*
         file_glob: true
         skip_cleanup: true
-        overwrite: true
         tag: $TRAVIS_TAG
         name: FoodWeek-Release $TRAVIS_TAG
         on:
           branch: master
-          tags: false
+          tags: true
 
 after_deploy:
   - rm -rf $TRAVIS_BUILD_DIR/app/build/outputs
