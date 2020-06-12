@@ -55,7 +55,7 @@ jobs:
       deploy:
         provider: releases
         token: $GITHUB_API_KEY
-        file: app/build/outputs/apk/release/*
+        file: app/build/outputs/apk/release/app-release.apk
         file_glob: true
         cleanup: true
         overwrite: true
