@@ -47,8 +47,6 @@ stages:
 jobs:
   include:
     - stage: deploy
-      before_deploy:
-        - export APP_VERSION=$(./gradlew :app:printVersionName)
       deploy:
         provider: releases
         token: $GITHUB_API_KEY
