@@ -44,6 +44,10 @@ script:
 stages:
   - deploy
 
+before_deploy:
+  - export TRAVIS_TAG=v1.0
+  - git tag $TRAVIS_TAG
+
 jobs:
   include:
     - stage: deploy
@@ -54,8 +58,9 @@ jobs:
         file_glob: true
         cleanup: true
         overwrite: true
-        name: Name $APP_VERSION
+        name: FoodWeek - Ease your daily cooking with our food planer and schedule
         release_notes: Automatic build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built by Travis
           CI on $(date +'%F %T %Z').
         on:
           branch: master
+          tags: true
