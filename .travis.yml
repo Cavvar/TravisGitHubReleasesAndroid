@@ -61,7 +61,7 @@ jobs:
         name: FoodWeek-Release $TRAVIS_TAG
         on:
           branch: master
-          tags: true
+          tags: false
 
 after_deploy:
   - rm -rf $TRAVIS_BUILD_DIR/app/build/outputs
