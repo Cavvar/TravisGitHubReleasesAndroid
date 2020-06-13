@@ -33,6 +33,7 @@ cache:
     - "$HOME/.android/build-cache"
 
 before_script:
+  - cd app/
   - chmod +x gradlew
 
 before_install:
