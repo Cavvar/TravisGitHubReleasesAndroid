@@ -37,6 +37,7 @@ before_script:
   - chmod +x gradlew
 
 before_install:
+  - ls
   - openssl aes-256-cbc -K $encrypted_ff4dccd7b2ed_key -iv $encrypted_ff4dccd7b2ed_iv -in app/travis-keystore.jks.enc -out app/travis-keystore.jks -d
 
 script:
