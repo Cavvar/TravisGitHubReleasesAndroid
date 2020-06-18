@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "com.hiya.jacoco-android"
 
 android {
     compileSdkVersion 29
@@ -16,11 +17,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        release
-    }
-
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -38,14 +38,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-
-    def isRunningOnTravis = System.getenv("CI") == "true"
-    if (isRunningOnTravis) {
-        signingConfigs.release.storeFile = file("../travis-keystore.jks")
-        signingConfigs.release.storePassword = System.getenv("keystore_password")
-        signingConfigs.release.keyAlias = System.getenv("keystore_alias")
-        signingConfigs.release.keyPassword = System.getenv("keystore_alias_password")
     }
 }
 
